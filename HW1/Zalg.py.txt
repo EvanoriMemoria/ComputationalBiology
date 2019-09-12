@@ -28,10 +28,7 @@ def z_alg(str):
     return Z
 
 
-print("Testing Z algorithm output on string 'aabaabcaabaabaabc' ")
 print(z_alg("aabaabcaabaabaabc"))  # z algorithm test
-
-print("\n\nTesting Z algorithm exact pattern matching on string %s\n" % TEST_STRING)
 
 Z = z_alg(TEST_STRING)  # run the test string through the algorithm
 prefix_len = 0
@@ -44,4 +41,4 @@ for i in range(len(TEST_STRING)):
 # if the length is matched in any of the z values, we found a prefix match in the string.
 for i in range(len(Z)):
     if Z[i] == prefix_len:
-        print("There is an exact match at index %d" % i)
+        print("There is a perfect match at index %d" % i)
