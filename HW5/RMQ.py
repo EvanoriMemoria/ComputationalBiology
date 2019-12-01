@@ -1,7 +1,6 @@
 import numpy as np
 import math
 import random
-import sys
 
 VERBOSE = 0
 n = 100
@@ -17,13 +16,16 @@ def preprocess():
         sparse[i][0] = i
     j = 1
     i = 0
+    # Iterate through the columns of the sparse table
     while 2**j <= n:
         if VERBOSE:
             print("first while {} is less than {}".format(2**j, n))
+        # Iterate over the rows of the sparse table - only the values we need
         while i+(2**j)-1 < n:
             if VERBOSE:
                 print("i: {}, j: {}".format(i, j))
                 print("if {} is less than {}".format(arr[sparse[i][j-1]], arr[sparse[i+2**(j-1)][j-1]]))
+            # Compare two previous values and set the current value equal to the lesser
             if arr[sparse[i][j-1]] < arr[sparse[i+2**(j-1)][j-1]]:
                 sparse[i][j] = sparse[i][j-1]
                 if VERBOSE:
@@ -40,8 +42,8 @@ def preprocess():
     print("Sparse Table Finished\n")
     return sparse
 
-
-def rangeMinimumQuerry(low, high):
+# Returns the minimum value from the sparse table between the given indices
+def rangeMinimumQuery(low, high):
     mid = high-low+1
     k = int(math.log(mid, 2))
     option1 = arr[sparse[low][k]]
@@ -59,4 +61,4 @@ if n <= 100:
 rand1 = random.randrange(n)
 rand2 = random.randrange(n)
 print("\nFinding lowest between index {} and {}".format(min([rand1, rand2]), max(rand1, rand2)))
-print("Lowest value in range: {}".format(rangeMinimumQuerry(min([rand1, rand2]), max([rand1, rand2]))))
+print("Lowest value in range: {}".format(rangeMinimumQuery(min([rand1, rand2]), max([rand1, rand2]))))
