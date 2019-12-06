@@ -13,11 +13,22 @@
 \maketitle
 
 \section{Introduction}
-The paper starts by making the assertion that algorithms which find the location of specific genes are imperfect and frequently have errors. Errors in this base algorithm often lead to errors further down the pipeline as well in algorithms and calculations concerned with finding protein sequences, similarity, and phylogenetic analysis.
+The paper starts by making the assertion that algorithms which find the location of specific genes are imperfect and frequently have errors. Errors in this base algorithm often lead to errors further down the pipeline as well in algorithms and calculations concerned with finding protein sequences, similarity, and phylogenetic analysis. Thus, any improvements to the base gene maps will improve all research down the line.
 
 \section{Approach}
-The base idea is that there are certain genes which are inherent among most members of a specific phylogeny. Specifically, their solution is most easily applied to certain types of bacteria. They "developed a Genome Majority Vote (GVM) algorithm and applied it to a conservative test case: gene maps from E.coli and close relatives." By comparing all of the start sites through multiple sequence alignment, if a start position aligns for most of the genes then that one is used, in addition, another start site is sought which could be an alternative for the rest of the genes.
+The fundamental idea of the paper is that there are certain genes which are inherent among most members of a specific phylogeny, and often they will have comparable start positions relative to the rest of the genomic information. Specifically, their solution is most easily applied to certain types of bacteria which had decent information present at this point in time. They "developed a Genome Majority Vote (GMV) algorithm and applied it to a conservative test case: gene maps from E.coli and close relatives" \cite{Geno2011}. By comparing all of the start sites through multiple sequence alignment, if a start position aligns for most of the genes then that one is used, in addition, another start site is sought which could be an alternative for the rest of the genes, looking for other start patterns which could be present.
+	Working off of previous works where they showed relative accuracy of different gene maps in GeneBank, they decided to use the gene maps they showed were generally more accurate, the Prodigal maps. By comparing to the most accurate existing maps they recieved a more conservative estimate for their algorithm.
+	
+\section{Results}
+After testing on eight different sets with gene maps of variable similarity, they concluded that the sets with medium variability - where a decent portion had the same starts sites - had the most improvement. The tests with a large number of similar start sites were already fairly accurate, and the sets with a lot of variation were unable to find a starting point that many of the genes agreed on. The increase in accuracy was up to 15\%. They calculated an error rate in the algorithm of just 7\%.
 
+\section{Followup}
+After running the previous conservative tests they turned their attention toward the entirety of the Genebank, gathering information and hypothesizing improvements for non-conservative tests. They estimated that GMV would correct approximately 81\% of the errors without the use of Prodigal. This is relevant because in the original test on Prodigal gene maps, approximately $3/4$ of the original errors were correct by Prodigal and only $1/4$ were corrected by GMV, whereas in this new estimation, all errors would be corrected by GMV. However, due to corrections made through experimentally validated start sites, there was no need for GMV in the general database.
+
+\section{My thoughts}
+The paper itself appears to have been fairly influential in the world of computational biology, having been referenced an additional seven papers in the following four years. I'm surprised it took as long as it did to realize that using what is essentially an averaging heuristic on a series of similar strings would result in improved performance. I always find it interesting to look at the different ways in which patterns express themselves in biology and can be exploited to improve the accuracy of our tools to measure certain groups together. Overall, I wish I had looked into other papers a bit, perhaps with more relevant dates.
+
+\newpage
 \bibliography{bibliography}
 \bibliographystyle{plain}
 
