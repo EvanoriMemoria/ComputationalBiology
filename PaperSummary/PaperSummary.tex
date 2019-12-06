@@ -1,0 +1,24 @@
+\documentclass{article}
+\title{A summary of\\ \textit{Genome Majority Vote Improves Gene Predictions}\cite{Geno2011}}
+\author{Nicholas Rust}
+\date{12 November 2019}
+\usepackage[T1]{fontenc}
+\usepackage{titling}
+\usepackage{cite}
+
+\setlength{\droptitle}{-10em}   % This is your set screw
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+The paper starts by making the assertion that algorithms which find the location of specific genes are imperfect and frequently have errors. Errors in this base algorithm often lead to errors further down the pipeline as well in algorithms and calculations concerned with finding protein sequences, similarity, and phylogenetic analysis.
+
+\section{Approach}
+The base idea is that there are certain genes which are inherent among most members of a specific phylogeny. Specifically, their solution is most easily applied to certain types of bacteria. They "developed a Genome Majority Vote (GVM) algorithm and applied it to a conservative test case: gene maps from E.coli and close relatives." By comparing all of the start sites through multiple sequence alignment, if a start position aligns for most of the genes then that one is used, in addition, another start site is sought which could be an alternative for the rest of the genes.
+
+\bibliography{bibliography}
+\bibliographystyle{plain}
+
+\end{document}

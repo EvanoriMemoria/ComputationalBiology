@@ -3,10 +3,10 @@ import math
 import random
 
 VERBOSE = 0
-n = 100
-#arr = np.array([4, 6, 1, 5, 7, 3])
-arr = np.random.randint(n+1, size=n)
-#arr = np.sort(np.random.randint(n+1, size=n))
+n = 6
+arr = np.array([4, 6, 1, 5, 7, 3])  # Little test array
+#arr = np.random.randint(n+1, size=n)  # Random n length array of random integers between 0 and n
+#arr = np.sort(np.random.randint(n+1, size=n))  # Sorted n length array of random integers between 0 and n
 sparse = np.zeros((n, math.floor(math.log(n, 2))+1), dtype=int)
 
 
@@ -54,7 +54,10 @@ def rangeMinimumQuery(low, high):
 
 
 print("n: {}".format(n))
-print("First 20 integers of the array: {}\n".format(arr[:20]))
+if n > 20:
+    print("First 20 integers of the array: {}\n".format(arr[:20]))
+else:
+    print("Array: {}\n".format(arr[:n]))
 preprocess()
 if n <= 100:
     print(sparse)
